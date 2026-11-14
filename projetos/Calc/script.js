@@ -1,12 +1,12 @@
 var tela = document.getElementById("display");
-tela.innerHTML = "0";
+tela.textContent = "0";
 
 var numero1 = 0;
 var operador = "";
 var novoNumero = false;
 
 function clean() {
-    tela.innerHTML = "0";
+    tela.textContent = "0";
     numero1 = 0;
     operador = "";
     novoNumero = false;
@@ -21,7 +21,7 @@ function insert(valor) {
             calcular();
         }
 
-        numero1 = parseFloat(tela.innerHTML);
+        numero1 = parseFloat(tela.textContent);
 
         if (valor == "*") {
             operador = "x";
@@ -36,20 +36,20 @@ function insert(valor) {
     // Permite apenas um ponto decimal em cada número.
     if (valor == ".") {
         if (novoNumero == true) {
-            tela.innerHTML = "0.";
+            tela.textContent = "0.";
             novoNumero = false;
-        } else if (tela.innerHTML.indexOf(".") == -1) {
-            tela.innerHTML = tela.innerHTML + ".";
+        } else if (tela.textContent.indexOf(".") == -1) {
+            tela.textContent = tela.textContent + ".";
         }
         return;
     }
 
     // Digita os números no visor.
-    if (novoNumero == true || tela.innerHTML == "0") {
-        tela.innerHTML = valor;
+    if (novoNumero == true || tela.textContent == "0") {
+        tela.textContent = valor;
         novoNumero = false;
     } else {
-        tela.innerHTML = tela.innerHTML + valor;
+        tela.textContent = tela.textContent + valor;
     }
 }
 
@@ -59,7 +59,7 @@ function calcular() {
         return;
     }
 
-    var numero2 = parseFloat(tela.innerHTML);
+    var numero2 = parseFloat(tela.textContent);
     var resultado = 0;
 
     if (operador == "+") {
@@ -80,7 +80,7 @@ function calcular() {
         resultado = numero1 / numero2;
     }
 
-    tela.innerHTML = resultado;
+    tela.textContent = resultado;
     numero1 = resultado;
     operador = "";
     novoNumero = true;
@@ -91,10 +91,10 @@ function back() {
         return;
     }
 
-    tela.innerHTML = tela.innerHTML.substring(0, tela.innerHTML.length - 1);
+    tela.textContent = tela.textContent.substring(0, tela.textContent.length - 1);
 
-    if (tela.innerHTML == "" || tela.innerHTML == "-") {
-        tela.innerHTML = "0";
+    if (tela.textContent == "" || tela.textContent == "-") {
+        tela.textContent = "0";
     }
 }
 
